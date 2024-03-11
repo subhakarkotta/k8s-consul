@@ -1,0 +1,48 @@
+consul:
+  fullnameOverride: consul
+  global:
+    datacenter: dce
+    acls:
+      manageSystemACLs: true
+    argocd:
+      enabled: true
+    tls:
+      enabled: true
+      httpsOnly: false
+  connectInject:
+    enabled: false
+  ui:
+    enabled: false
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+  client:
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 500Mi
+        cpu: 500m
+    enabled: true
+    grpc: false
+  dns:
+    enabled: false
+  server:
+    disruptionBudget:
+      enabled: false
+    resources:
+      requests:
+        memory: 500Mi
+        cpu: 500m
+      limits:
+        memory: 4Gi
+        cpu: 4
+    replicas: 3
+    bootstrapExpect: 3
+    extraConfig: |
+      {
+        "performance": {
+          "raft_multiplier": 1
+        }
+      }
