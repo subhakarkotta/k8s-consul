@@ -5,7 +5,7 @@ consul:
     acls:
       manageSystemACLs: true
     argocd:
-      enabled: true
+      enabled: false
     tls:
       enabled: true
       httpsOnly: false
